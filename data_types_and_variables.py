@@ -38,11 +38,12 @@ print("Student can enroll: " + eligible);
 
 # 4. A product offer can be applied only if people buys more than 2 items, and 
 # the offer has not expired. Premium members do not need to buy a specific amount of products.
-def eligible(count, expiry):
-    return count and not expiry
+def eligible(count, still_good, premium):
+    return still_good and (count > 2 or premium)
 count = 5 # can ask user "how many items" and use other criteria to determine eligibility
-expiry = False
-check_eligible = str(eligible(count, expiry))
+still_good = True
+premium = False
+check_eligible = str(eligible(count, still_good, premium))
 print("Offer is available: " + check_eligible)
 
 # 5. Use the following code to follow the instructions below:
