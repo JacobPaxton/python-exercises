@@ -103,9 +103,15 @@ while i < 50:
 # Prompt the user to enter a positive number and write a loop that counts from 0 to that number. 
 # (Hints: first make sure that the value the user entered is a valid number, also 
 # note that the input function returns a string, so you'll need to convert this to a numeric type.)
+number = int(input("Enter a number: "))
+for num in range(0, (number + 1)):
+    print(num)
 
 # Write a program that prompts the user for a positive integer. 
 # Next write a loop that prints out the numbers from the number the user entered down to 1.
+pos_int = int(input("Enter a positive integer: "))
+for num in range(0, number):
+    print(number - num)
 
 # One of the most common interview questions for entry-level programmers is the FizzBuzz test. 
 # Developed by Imran Ghory, the test is designed to test basic looping and conditional logic skills.
@@ -113,6 +119,15 @@ while i < 50:
 # For multiples of three print "Fizz" instead of the number
 # For the multiples of five print "Buzz".
 # For numbers which are multiples of both three and five print "FizzBuzz".
+for num in range(1,101):
+    if num % 3 == 0 and num % 5 == 0:
+        print("FizzBuzz")
+    elif num % 3 == 0:
+        print("Fizz")
+    elif num % 5 == 0:
+        print("Buzz")
+    else:
+        print(num)
 
 # Display a table of powers.
 # Prompt the user to enter an integer.
@@ -120,3 +135,85 @@ while i < 50:
 # Ask if the user wants to continue.
 # Assume that the user will enter valid data.
 # Only continue if the user agrees to.
+integer = 0
+while integer == integer:
+    integer = int(input("Enter an integer: "))
+    for num in range(1, (integer + 1)):
+        print(num, (num ** 2), (num ** 3)) # Could format this table better with more time
+    cont = input("Do you want to continue entering values? y/n: ")
+    if cont == 'n':
+        break
+
+# Convert given number grades into letter grades.
+# Prompt the user for a numerical grade from 0 to 100.
+# Display the corresponding letter grade.
+# Prompt the user to continue.
+# Assume that the user will enter valid integers for the grades.
+# The application should only continue if the user agrees to.
+# Grade Ranges:
+# A : 100 - 88
+# B : 87 - 80
+# C : 79 - 67
+# D : 66 - 60
+# F : 59 - 0
+# Bonus: Edit your grade ranges to include pluses and minuses (ex: 99-100 = A+).
+
+def grade_elaboration(grade_range, grade_distance_from_max):
+    # A+ is top third, A- is bottom third of the range between 100 and 88
+    # Check which third the user's score falls in
+    if grade_distance_from_max > grade_range * (2 / 3): # if score is in bottom third
+        return "-"
+    elif grade_distance_from_max > grade_range * (1 / 3):
+        return ""
+    else:
+        return "+"
+
+score = int(input("Enter a grade score from 0 to 100: "))
+if score >= 88:
+    grade_range = 12 # 'A' range is 100 - 88
+    grade_distance_from_max = 100 - score # a score of 91 is 9 less than the max score in the 'A' bracket
+    print("A" + grade_elaboration(grade_range, grade_distance_from_max)) # push 12 and 9 to function
+elif score >= 80:
+    grade_range = 7 # 'B' range is 87 - 80
+    grade_distance_from_max = 87 - score # a score of 86 is 1 less than the max score of the 'B' bracket
+    print("B" + grade_elaboration(grade_range, grade_distance_from_max))
+elif score >= 67:
+    grade_range = 12 # 'C' range is 79 - 67
+    grade_distance_from_max = 79 - score
+    print("C" + grade_elaboration(grade_range, grade_distance_from_max))
+elif score >= 60:
+    grade_range = 6  # 'D' range is 66 - 60
+    grade_distance_from_max = 66 - score
+    print("D" + grade_elaboration(grade_range, grade_distance_from_max))
+else:
+    print("F")
+
+# Create a list of dictionaries where each dictionary represents a book that you have read. 
+# Each dictionary in the list should have the keys title, author, and genre. 
+# Loop through the list and print out information about each book.
+# Prompt the user to enter a genre, then loop through your books list and 
+# print out the titles of all the books in that genre.
+collection = [
+    {
+        "Title": "Nerd",
+        "Author": "A Nerd",
+        "Genre": "Education"
+    }, 
+    {
+        "Title": "Cool",
+        "Author": "Cool Guy",
+        "Genre": "Leisure"
+    }, 
+    {
+        "Title": "Hardcore",
+        "Author": "Madman",
+        "Genre": "Horror"
+    }]
+
+for book in collection:
+    print("Book:", book["Title"], "by", (book["Author"] + ","), ("Genre = " + book["Genre"]))
+
+user_input = input("Enter a genre: ")
+for book in collection:
+    if book["Genre"] == user_input:
+        print("Book:", book["Title"], "by", (book["Author"] + ","), ("Genre = " + book["Genre"]))
