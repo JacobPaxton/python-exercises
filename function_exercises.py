@@ -244,3 +244,25 @@ def backtotwelve(time):
 # col_index('A') returns 1
 # col_index('B') returns 2
 # col_index('AA') returns 27
+# ZZ = 702?
+def col_index(col_name):
+    # Code is WIP
+    if type(col_name) == str and len(col_name) == 1:
+        index = ord(col_name.lower()) - 96
+    elif type(col_name) == str and len(col_name) > 1:
+        i = 0
+        arb_char_calc_list = []
+        index = 1
+        for char in col_name:
+            arb_char_calc_list.append((ord(char.lower()) - 96))
+            i += 1
+        for arb_char in range(1, len(arb_char_calc_list)):
+            index *= (arb_char_calc_list[arb_char - 1] + (26 ** i))
+        index += arb_char_calc_list[-1]
+        print(arb_char_calc_list)
+        # ((ord(first_letter) - 96) + (26 * 0)) * ((ord(second_letter) + (26 * 1)) * (etc...))
+    else:
+        print("Error: column name not a string of letters")  
+    return index
+
+# print(col_index('ZZZ'))
