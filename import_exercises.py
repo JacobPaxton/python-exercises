@@ -86,11 +86,14 @@ for user in jfile:
     if user["favoriteFruit"] not in fruit_iter_dict.keys():
         fruit_iter_dict[user["favoriteFruit"]] = 0
     fruit_iter_dict[user["favoriteFruit"]] += 1
+
 fruit_list = list(fruit_iter_dict.keys())
 fruit_nums = list(fruit_iter_dict.values())
+
 most_common_fruit_num = max(fruit_nums)
 most_common_fruit_index = fruit_nums.index(most_common_fruit_num)
 most_common_fruit = fruit_list[most_common_fruit_index]
+
 print(most_common_fruit)
 
 # Least most common favorite fruit
